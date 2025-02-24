@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -22,5 +23,7 @@ void readfile(const string &filePath, vector<Employee>& employees);
 void displayEmployees(const vector<Employee> &employees);
 int findIndexOfEmployeeByID(const vector<Employee> &employees, int id);
 void displayEmployeeByID(const vector<Employee> &employees, int id);
+map <string, int> countEmployeesByDepartment(const vector<Employee> &employees);
+void displayDepartmentCounts(const map<string, int> &departmentHeadcount);
 
 #endif // EMPLOYEE_H

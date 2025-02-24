@@ -4,6 +4,7 @@
 #include "employee.h"
 #include <fstream>
 #include <sstream>
+#include <map>
 #include <iomanip>
 
 void readfile(const string &filePath, vector<Employee>& employees) {
@@ -77,15 +78,19 @@ void displayEmployees(const vector<Employee> &employees) {
 int findIndexOfEmployeeByID(const vector<Employee> &employees, int id) {
     for (int i = 0; i < employees.size(); i++) {
         if (employees[i].id == id) {
+            // Return i if employee[i]'s id matches id to find
             return i;
         }
     }
+
+    // Return -1 if employee id is not found
     return -1;
 }
 
 void displayEmployeeByID(const vector<Employee> &employees, int id) {
     int index = findIndexOfEmployeeByID(employees, id);
 
+    // Display employee details based on found index
     if (index == -1) {
         cout << "\nEmployee with ID " << id << " not found." << endl;
     } else {
@@ -97,3 +102,28 @@ void displayEmployeeByID(const vector<Employee> &employees, int id) {
         cout << "Experience: " << employees[index].yearsOfExperience << " years\n";
     }
 }
+
+map <string, int> countEmployeesByDepartment(const vector<Employee> &employees) {
+    map <string, int> departmentHeadcount;
+
+    for (const Employee& emp : employees) {
+        // Map according to department
+        departmentHeadcount[emp.department]++;
+    }
+
+    return departmentHeadcount;
+}
+
+void displayDepartmentCounts(const map<string, int> &departmentHeadcount) {
+    cout << left << setw(15) << "Department"
+         << setw(10) << "Headcount" << endl;
+    cout << string(25, '-') << endl; // Horizontal line
+
+    // Detect type of variable automatically
+    for (const auto &[department, count] : departmentHeadcount) {
+        cout << left << setw(15) << department
+             << setw(10) << count << endl;
+    }
+}
+
+

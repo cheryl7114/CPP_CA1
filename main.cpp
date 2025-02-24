@@ -8,9 +8,15 @@ int main() {
     readfile(fileName, employees);
     displayEmployees(employees);
 
-    cout << "Enter an employee ID to search for: ";
-    cin >> id;
-    displayEmployeeByID(employees, id);
+    // cout << "Enter an employee ID to search for: ";
+    // cin >> id;
+    // displayEmployeeByID(employees, id);
+
+    // Count employees per department
+    map<string, int> departmentHeadcount = countEmployeesByDepartment(employees);
+
+    // Display department counts
+    displayDepartmentCounts(departmentHeadcount);
 
     return 0;
 }
