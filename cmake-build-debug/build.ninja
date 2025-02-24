@@ -55,6 +55,12 @@ build CMakeFiles/CPP_CA1.dir/main.cpp.o: CXX_COMPILER__CPP_CA1_unscanned_Debug /
   OBJECT_DIR = CMakeFiles/CPP_CA1.dir
   OBJECT_FILE_DIR = CMakeFiles/CPP_CA1.dir
 
+build CMakeFiles/CPP_CA1.dir/employee.cpp.o: CXX_COMPILER__CPP_CA1_unscanned_Debug /Users/cherylkong/Desktop/CPP_CA1/employee.cpp || cmake_object_order_depends_target_CPP_CA1
+  DEP_FILE = CMakeFiles/CPP_CA1.dir/employee.cpp.o.d
+  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/CPP_CA1.dir
+  OBJECT_FILE_DIR = CMakeFiles/CPP_CA1.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target CPP_CA1
@@ -63,7 +69,7 @@ build CMakeFiles/CPP_CA1.dir/main.cpp.o: CXX_COMPILER__CPP_CA1_unscanned_Debug /
 #############################################
 # Link the executable CPP_CA1
 
-build CPP_CA1: CXX_EXECUTABLE_LINKER__CPP_CA1_Debug CMakeFiles/CPP_CA1.dir/main.cpp.o
+build CPP_CA1: CXX_EXECUTABLE_LINKER__CPP_CA1_Debug CMakeFiles/CPP_CA1.dir/main.cpp.o CMakeFiles/CPP_CA1.dir/employee.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
   OBJECT_DIR = CMakeFiles/CPP_CA1.dir
   POST_BUILD = :
