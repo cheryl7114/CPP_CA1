@@ -53,7 +53,7 @@ void readfile(const string &filePath, vector<Employee>& employees) {
 }
 
 void displayEmployees(const vector<Employee> &employees) {
-    // Table Header
+    // Table header
     cout << left << setw(6) << "ID"
          << setw(23) << "Name"
          << setw(7) << "Age"
@@ -63,7 +63,7 @@ void displayEmployees(const vector<Employee> &employees) {
 
     cout << string(73, '-') << endl; // Horizontal line
 
-    // Display Employee Data
+    // Display employee data
     for (const Employee &emp : employees) {
         cout << left << setw(6) << emp.id
              << setw(23) << emp.name
@@ -72,7 +72,6 @@ void displayEmployees(const vector<Employee> &employees) {
              << "$" << setw(12) << fixed << setprecision(2) << emp.salary
              << emp.yearsOfExperience << " years" << endl;
     }
-    cout << "\n";
 }
 
 int findIndexOfEmployeeByID(const vector<Employee> &employees, int id) {
@@ -103,19 +102,15 @@ void displayEmployeeByID(const vector<Employee> &employees, int id) {
     }
 }
 
-map <string, int> countEmployeesByDepartment(const vector<Employee> &employees) {
-    map <string, int> departmentHeadcount;
-
+void countEmployeesByDepartment(const vector<Employee> &employees, map<string, int> &departmentHeadcount) {
     for (const Employee& emp : employees) {
         // Map according to department
         departmentHeadcount[emp.department]++;
     }
-
-    return departmentHeadcount;
 }
 
 void displayDepartmentCounts(const map<string, int> &departmentHeadcount) {
-    cout << left << setw(15) << "Department"
+    cout << "\n" << left << setw(15) << "Department"
          << setw(10) << "Headcount" << endl;
     cout << string(25, '-') << endl; // Horizontal line
 
