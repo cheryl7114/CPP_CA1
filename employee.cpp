@@ -71,4 +71,29 @@ void displayEmployees(const vector<Employee> &employees) {
              << "$" << setw(12) << fixed << setprecision(2) << emp.salary
              << emp.yearsOfExperience << " years" << endl;
     }
+    cout << "\n";
+}
+
+int findIndexOfEmployeeByID(const vector<Employee> &employees, int id) {
+    for (int i = 0; i < employees.size(); i++) {
+        if (employees[i].id == id) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void displayEmployeeByID(const vector<Employee> &employees, int id) {
+    int index = findIndexOfEmployeeByID(employees, id);
+
+    if (index == -1) {
+        cout << "\nEmployee with ID " << id << " not found." << endl;
+    } else {
+        cout << "\nEmployee found!" << endl;
+        cout << "Name: " << employees[index].name << endl;
+        cout << "Age: " << employees[index].age << endl;
+        cout << "Department: " << employees[index].department << endl;
+        cout << "Salary: " << employees[index].salary << endl;
+        cout << "Experience: " << employees[index].yearsOfExperience << " years\n";
+    }
 }

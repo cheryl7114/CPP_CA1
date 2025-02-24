@@ -20,5 +20,7 @@ struct Employee {
 
 void readfile(const string &filePath, vector<Employee>& employees);
 void displayEmployees(const vector<Employee> &employees);
+int findIndexOfEmployeeByID(const vector<Employee> &employees, int id);
+void displayEmployeeByID(const vector<Employee> &employees, int id);
 
 #endif // EMPLOYEE_H
