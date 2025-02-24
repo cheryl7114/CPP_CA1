@@ -10,6 +10,7 @@
 using namespace std;
 
 struct Employee {
+    int id;
     string name;
     int age;
     string department;

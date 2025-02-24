@@ -22,6 +22,10 @@ void readfile(const string &filePath, vector<Employee>& employees) {
         Employee emp;
         string temp;
 
+        // Parse id
+        if (!getline(ss, temp, ',') || temp.empty()) continue;
+        emp.id = stoi(temp);
+
         // Parse name
         if (!getline(ss, emp.name, ',')) continue;
 
@@ -49,17 +53,19 @@ void readfile(const string &filePath, vector<Employee>& employees) {
 
 void displayEmployees(const vector<Employee> &employees) {
     // Table Header
-    cout << left << setw(25) << "Name"
+    cout << left << setw(6) << "ID"
+         << setw(23) << "Name"
          << setw(7) << "Age"
          << setw(13) << "Department"
          << setw(12) << "Salary"
          << setw(10) << "Experience" << endl;
 
-    cout << string(70, '-') << endl; // Horizontal line
+    cout << string(73, '-') << endl; // Horizontal line
 
     // Display Employee Data
     for (const Employee &emp : employees) {
-        cout << left << setw(25) << emp.name
+        cout << left << setw(6) << emp.id
+             << setw(23) << emp.name
              << setw(7) << emp.age
              << setw(13) << emp.department
              << "$" << setw(12) << fixed << setprecision(2) << emp.salary
