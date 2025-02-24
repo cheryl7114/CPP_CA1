@@ -1,0 +1,3 @@
+/Users/cherylkong/Desktop/CPP_CA1/cmake-build-debug/CMakeFiles/CPP_CA1.dir
+/Users/cherylkong/Desktop/CPP_CA1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/cherylkong/Desktop/CPP_CA1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
