@@ -50,11 +50,17 @@ void readfile(const string &filePath, vector<Employee>& employees) {
     }
 
     fin.close();
+    displayEmployees(employees);
 }
 
-void displayEmployees(const vector<Employee> &employees) {
+void displayEmployees(const vector<Employee> &employeesSubset) {
+    if (employeesSubset.empty()) {
+        cout << "No employees to display." << endl;
+        return;
+    }
+
     // Table header
-    cout << left << setw(6) << "ID"
+    cout << "\n" << left << setw(6) << "ID"
          << setw(23) << "Name"
          << setw(7) << "Age"
          << setw(13) << "Department"
@@ -64,7 +70,7 @@ void displayEmployees(const vector<Employee> &employees) {
     cout << string(73, '-') << endl; // Horizontal line
 
     // Display employee data
-    for (const Employee &emp : employees) {
+    for (const Employee &emp : employeesSubset) {
         cout << left << setw(6) << emp.id
              << setw(23) << emp.name
              << setw(7) << emp.age
@@ -121,4 +127,11 @@ void displayDepartmentCounts(const map<string, int> &departmentHeadcount) {
     }
 }
 
-
+void loadEmployeeByDepartment(string department, const vector<Employee> &employees, vector<Employee> &employeesByDepartment) {
+    for (const Employee& emp : employees) {
+        if (emp.department == department) {
+            employeesByDepartment.push_back(emp);
+        }
+    }
+    displayEmployees(employeesByDepartment);
+}
