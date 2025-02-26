@@ -7,7 +7,7 @@ int main() {
     map<string, int> departmentHeadcount;
     string departmentToFind;
     Employee youngest, oldest;
-    int id;
+    int id, avgAge;
 
     readfile(fileName, employees);
 
@@ -23,7 +23,13 @@ int main() {
     // cin >> departmentToFind;
     // loadEmployeeByDepartment(departmentToFind, employees, employeesByDepartment);
 
+    avgAge = findAgeStatistics(employees, youngest, oldest);
 
+    cout << "\nAverage age: " << avgAge << endl;
+    cout << "\nYoungest employee: " << endl;
+    displayEmployeeByID(employees, youngest.id);
+    cout << "\nOldest employee: " << endl;
+    displayEmployeeByID(employees, oldest.id);
 
     return 0;
 }

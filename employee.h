@@ -26,5 +26,6 @@ void displayEmployeeByID(const vector<Employee> &employees, int id);
 void countEmployeesByDepartment(const vector<Employee> &employees, map<string, int> &departmentHeadcount);
 void displayDepartmentCounts(const map<string, int> &departmentHeadcount);
 void loadEmployeeByDepartment(string department, const vector<Employee> &employees, vector<Employee> &employeesByDepartment);
+int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Employee &oldest);
 
 #endif // EMPLOYEE_H

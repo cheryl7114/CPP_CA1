@@ -99,7 +99,6 @@ void displayEmployeeByID(const vector<Employee> &employees, int id) {
     if (index == -1) {
         cout << "\nEmployee with ID " << id << " not found." << endl;
     } else {
-        cout << "\nEmployee found!" << endl;
         cout << "Name: " << employees[index].name << endl;
         cout << "Age: " << employees[index].age << endl;
         cout << "Department: " << employees[index].department << endl;
