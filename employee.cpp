@@ -39,7 +39,7 @@ void readfile(const string &filePath, vector<Employee>& employees) {
 
         // Parse salary
         if (!getline(ss, temp, ',') || temp.empty()) continue;
-        emp.salary = stof(temp);
+        emp.salary = stod(temp);
 
         // Parse years of experience
         if (!getline(ss, temp, ',') || temp.empty()) continue;
@@ -75,7 +75,7 @@ void displayEmployees(const vector<Employee> &employeesSubset) {
              << setw(23) << emp.name
              << setw(7) << emp.age
              << setw(13) << emp.department
-             << "$" << setw(12) << fixed << setprecision(2) << emp.salary
+             << "€" << setw(12) << fixed << setprecision(2) << emp.salary
              << emp.yearsOfExperience << " years" << endl;
     }
 }
@@ -134,4 +134,24 @@ void loadEmployeeByDepartment(string department, const vector<Employee> &employe
         }
     }
     displayEmployees(employeesByDepartment);
+}
+
+int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Employee &oldest) {
+    int totalAge = 0;
+    youngest = employees[0];
+    oldest = employees[0];
+
+    for (const Employee &emp : employees) {
+        totalAge += emp.age;
+
+        if (emp.age < youngest.age) {
+            youngest = emp;
+        }
+
+        if (emp.age > oldest.age) {
+            oldest = emp;
+        }
+    }
+
+    return totalAge/employees.size();
 }

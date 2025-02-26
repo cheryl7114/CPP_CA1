@@ -15,7 +15,7 @@ struct Employee {
     string name;
     int age;
     string department;
-    float salary;
+    double salary;
     int yearsOfExperience;
 };
 

@@ -6,6 +6,7 @@ int main() {
     vector<Employee> employeesByDepartment;
     map<string, int> departmentHeadcount;
     string departmentToFind;
+    Employee youngest, oldest;
     int id;
 
     readfile(fileName, employees);
@@ -18,9 +19,11 @@ int main() {
     // countEmployeesByDepartment(employees, departmentHeadcount);
     // displayDepartmentCounts(departmentHeadcount);
 
-    cout << "\nEnter a department and I will display the employees in it: ";
-    cin >> departmentToFind;
-    loadEmployeeByDepartment(departmentToFind, employees, employeesByDepartment);
+    // cout << "\nEnter a department and I will display the employees in it: ";
+    // cin >> departmentToFind;
+    // loadEmployeeByDepartment(departmentToFind, employees, employeesByDepartment);
+
+
 
     return 0;
 }
