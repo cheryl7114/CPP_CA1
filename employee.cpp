@@ -50,7 +50,6 @@ void readfile(const string &filePath, vector<Employee>& employees) {
     }
 
     fin.close();
-    displayEmployees(employees);
 }
 
 void displayEmployees(const vector<Employee> &employees) {

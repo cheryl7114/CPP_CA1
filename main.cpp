@@ -32,3 +32,15 @@ int main() {
 
     return 0;
 }
+
+void menu() {
+    cout << "Employee App Menu" << endl <<
+            "1. Display all employees" << endl <<
+            "2. Find employee by ID" << endl <<
+            "3. Display headcount for each department" << endl <<
+            "4. Display employees in a department" << endl <<
+            "5. Employee age statistics" << endl <<
+            "6. Search for an employee" << endl <<
+            "7. Display employee data according to descending salary" << endl <<
+            "8. Exit" << endl;
+}
