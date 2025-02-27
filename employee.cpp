@@ -136,9 +136,10 @@ void loadEmployeeByDepartment(const string& department, const vector<Employee> &
 }
 
 int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Employee &oldest) {
+    if (employees.empty()) return 0; // Avoid code crash bcos of division by zero
+
     int totalAge = 0;
-    youngest = employees[0];
-    oldest = employees[0];
+    youngest = oldest = employees[0];
 
     for (const Employee &emp : employees) {
         totalAge += emp.age;
@@ -155,18 +156,23 @@ int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Em
     return totalAge/employees.size();
 }
 
+string toLower(string s) {
+    // Referenced https://www.geeksforgeeks.org/how-to-convert-std-string-to-lower-case-in-cpp/
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    return s;
+}
+
 vector<Employee> nameMatchInput(const vector<Employee> &employees, string &textInput) {
     vector<Employee> match;
 
-    // Referenced https://www.geeksforgeeks.org/how-to-convert-std-string-to-lower-case-in-cpp/
     // Convert textInput to lowercase
-    transform(textInput.begin(), textInput.end(), textInput.begin(), ::tolower);
+    textInput = toLower(textInput);
 
     for (auto it = employees.begin(); it != employees.end(); ++it) {
         string empName = it->name;
 
         // Convert employee name to lowercase
-        transform(empName.begin(), empName.end(), empName.begin(), ::tolower);
+        empName = toLower(empName);
 
         // https://www.geeksforgeeks.org/string-find-in-cpp/
         // string::npos is a constant that represents a non-position or invalid index. When string find() cannot locate the substring or character, it returns string::npos.
