@@ -177,3 +177,12 @@ vector<Employee> nameMatchInput(const vector<Employee> &employees, string &textI
 
     return match;
 }
+
+void sortDescendingSalary(vector<Employee> &descendingSalary) {
+    // https://www.digitalocean.com/community/tutorials/sorting-a-vector-in-c-plus-plus
+    sort(descendingSalary.begin(), descendingSalary.end(), [](const Employee &a, const Employee&b) {
+        return a.salary > b.salary;
+    });
+
+    displayEmployees(descendingSalary);
+}

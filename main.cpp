@@ -2,7 +2,7 @@
 
 int main() {
     const string fileName = "/Users/cherylkong/Desktop/CPP_CA1/employees.csv";
-    vector<Employee> employees, employeesByDepartment, employeesMatchingInput;
+    vector<Employee> employees, employeesByDepartment, employeesMatchingInput, descendingSalary;
     map<string, int> departmentHeadcount;
     string departmentToFind;
     Employee youngest, oldest;
@@ -10,7 +10,7 @@ int main() {
     int id, avgAge;
 
     readfile(fileName, employees);
-
+    descendingSalary = employees;
     // cout << "Enter an employee ID to search for: ";
     // cin >> id;
     // displayEmployeeByID(employees, 98);
