@@ -53,8 +53,8 @@ void readfile(const string &filePath, vector<Employee>& employees) {
     displayEmployees(employees);
 }
 
-void displayEmployees(const vector<Employee> &employeesSubset) {
-    if (employeesSubset.empty()) {
+void displayEmployees(const vector<Employee> &employees) {
+    if (employees.empty()) {
         cout << "No employees to display." << endl;
         return;
     }
@@ -70,7 +70,7 @@ void displayEmployees(const vector<Employee> &employeesSubset) {
     cout << string(73, '-') << endl; // Horizontal line
 
     // Display employee data
-    for (const Employee &emp : employeesSubset) {
+    for (const Employee &emp : employees) {
         cout << left << setw(6) << emp.id
              << setw(23) << emp.name
              << setw(7) << emp.age
@@ -126,7 +126,7 @@ void displayDepartmentCounts(const map<string, int> &departmentHeadcount) {
     }
 }
 
-void loadEmployeeByDepartment(string department, const vector<Employee> &employees, vector<Employee> &employeesByDepartment) {
+void loadEmployeeByDepartment(const string& department, const vector<Employee> &employees, vector<Employee> &employeesByDepartment) {
     for (const Employee& emp : employees) {
         if (emp.department == department) {
             employeesByDepartment.push_back(emp);
@@ -153,4 +153,27 @@ int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Em
     }
 
     return totalAge/employees.size();
+}
+
+vector<Employee> nameMatchInput(const vector<Employee> &employees, string &textInput) {
+    vector<Employee> match;
+
+    // Referenced https://www.geeksforgeeks.org/how-to-convert-std-string-to-lower-case-in-cpp/
+    // Convert textInput to lowercase
+    transform(textInput.begin(), textInput.end(), textInput.begin(), ::tolower);
+
+    for (auto it = employees.begin(); it != employees.end(); ++it) {
+        string empName = it->name;
+
+        // Convert employee name to lowercase
+        transform(empName.begin(), empName.end(), empName.begin(), ::tolower);
+
+        // https://www.geeksforgeeks.org/string-find-in-cpp/
+        // string::npos is a constant that represents a non-position or invalid index. When string find() cannot locate the substring or character, it returns string::npos.
+        if (empName.find(textInput) != string::npos) {
+            match.push_back(*it);
+        }
+    }
+
+    return match;
 }
