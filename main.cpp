@@ -1,5 +1,8 @@
 #include "employee.h"
 
+void menu();
+int choiceInput();
+
 int main() {
     const string fileName = "/Users/cherylkong/Desktop/CPP_CA1/employees.csv";
     vector<Employee> employees, employeesByDepartment, employeesMatchingInput, descendingSalary;
@@ -7,10 +10,19 @@ int main() {
     string departmentToFind;
     Employee youngest, oldest;
     string textInput;
-    int id, avgAge;
+    int id, avgAge, choice;
 
+    // Read file to load employee data
     readfile(fileName, employees);
+    // Make a copy of the original data
     descendingSalary = employees;
+
+    do {
+        menu();
+        choice = choiceInput();
+        cout << "Your choice: " << choice << endl;
+    } while(choice!=8);
+
     // cout << "Enter an employee ID to search for: ";
     // cin >> id;
     // displayEmployeeByID(employees, 98);
@@ -43,4 +55,20 @@ void menu() {
             "6. Search for an employee" << endl <<
             "7. Display employee data according to descending salary" << endl <<
             "8. Exit" << endl;
+}
+
+int choiceInput() {
+    int choice;
+    // https://www.geeksforgeeks.org/how-to-validate-user-input-in-cpp/
+    while(true) {
+        cout << "Enter your choice: ";
+
+        if (cin >> choice && choice >= 1 && choice <= 8) {
+            return choice;
+        } else {
+            cout << "Invalid input. Please enter a number between 1 and 8: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+        }
+    }
 }
