@@ -23,5 +23,10 @@ int main() {
     // cin >> departmentToFind;
     // loadEmployeeByDepartment(departmentToFind, employees, employeesByDepartment);
 
+    // cout << "\nEnter text to search for: ";
+    // getline(cin, textInput);
+    // employeesMatchingInput = nameMatchInput(employees, textInput);
+    // displayEmployees(employeesMatchingInput);
+
     return 0;
 }
