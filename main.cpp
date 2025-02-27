@@ -28,5 +28,7 @@ int main() {
     // employeesMatchingInput = nameMatchInput(employees, textInput);
     // displayEmployees(employeesMatchingInput);
 
+    sortDescendingSalary(descendingSalary);
+
     return 0;
 }
