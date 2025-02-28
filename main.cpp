@@ -5,10 +5,9 @@ int choiceInput();
 
 int main() {
     const string fileName = "/Users/cherylkong/Desktop/CPP_CA1/employees.csv";
-    vector<Employee> employees, employeesMatchingInput;
+    vector<Employee> employees;
     string departmentToFind;
     Employee youngest, oldest;
-    string textInput;
     int choice;
 
     // Read file to load employee data
@@ -51,17 +50,21 @@ int main() {
                 displayEmployeeByID(employees, oldest.id);
                 break;
             }
+            case 6: {
+                cout << "\nEnter name to search for: ";
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear previous input like java scanner.nextline()
+                string textInput;
+                getline(cin, textInput);
+                vector<Employee> employeesMatchingInput = nameMatchInput(employees, textInput);
+                displayEmployees(employeesMatchingInput);
+                break;
+            }
             case 8: {
                 cout << "\nExiting program..." << endl;
                 break;
             }
         }
     } while(choice!=8);
-
-    // cout << "\nEnter text to search for: ";
-    // getline(cin, textInput);
-    // employeesMatchingInput = nameMatchInput(employees, textInput);
-    // displayEmployees(employeesMatchingInput);
 
     // sortDescendingSalary(descendingSalary);
 
