@@ -59,14 +59,15 @@ int main() {
                 displayEmployees(employeesMatchingInput);
                 break;
             }
+            case 7: {
+                sortDescendingSalary(descendingSalary);
+            }
             case 8: {
                 cout << "\nExiting program..." << endl;
                 break;
             }
         }
     } while(choice!=8);
-
-    // sortDescendingSalary(descendingSalary);
 
     return 0;
 }
