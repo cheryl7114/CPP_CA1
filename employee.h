@@ -24,7 +24,7 @@ int findIndexOfEmployeeByID(const vector<Employee> &employees, int id);
 void displayEmployeeByID(const vector<Employee> &employees, int id);
 map<string, int> countEmployeesByDepartment(const vector<Employee> &employees);
 void displayDepartmentCounts(const map<string, int> &departmentHeadcount);
-void loadEmployeeByDepartment(const string& department, const vector<Employee> &employees, vector<Employee> &employeesByDepartment);
+vector<Employee> loadEmployeeByDepartment(const string &department, const vector<Employee> &employees);
 int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Employee &oldest);
 vector<Employee> nameMatchInput(const vector<Employee> &employees, string &textInput);
 void sortDescendingSalary(vector<Employee> &descendingSalary);

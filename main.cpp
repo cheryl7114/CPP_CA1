@@ -5,7 +5,7 @@ int choiceInput();
 
 int main() {
     const string fileName = "/Users/cherylkong/Desktop/CPP_CA1/employees.csv";
-    vector<Employee> employees, employeesByDepartment, employeesMatchingInput;
+    vector<Employee> employees, employeesMatchingInput;
     string departmentToFind;
     Employee youngest, oldest;
     string textInput;
@@ -35,17 +35,19 @@ int main() {
                 displayDepartmentCounts(departmentHeadcount);
                 break;
             }
+            case 4: {
+                cout << "\nEnter a department and I will display the employees in it: ";
+                cin >> departmentToFind;
+                vector<Employee> employeesByDepartment = loadEmployeeByDepartment(departmentToFind, employees);
+                displayEmployees(employeesByDepartment);
+                break;
+            }
             case 8: {
                 cout << "\nExiting program..." << endl;
                 break;
             }
         }
     } while(choice!=8);
-
-
-    // cout << "\nEnter a department and I will display the employees in it: ";
-    // cin >> departmentToFind;
-    // loadEmployeeByDepartment(departmentToFind, employees, employeesByDepartment);
 
     // cout << "\nEnter text to search for: ";
     // getline(cin, textInput);

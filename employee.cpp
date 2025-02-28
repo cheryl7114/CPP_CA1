@@ -52,6 +52,12 @@ void readfile(const string &filePath, vector<Employee>& employees) {
     fin.close();
 }
 
+string toLower(string s) {
+    // Referenced https://www.geeksforgeeks.org/how-to-convert-std-string-to-lower-case-in-cpp/
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    return s;
+}
+
 void displayEmployees(const vector<Employee> &employees) {
     if (employees.empty()) {
         cout << "No employees to display." << endl;
@@ -129,13 +135,16 @@ map<string, int> countEmployeesByDepartment(const vector<Employee> &employees) {
     return departmentHeadcount;
 }
 
-void loadEmployeeByDepartment(const string& department, const vector<Employee> &employees, vector<Employee> &employeesByDepartment) {
-    for (const Employee& emp : employees) {
-        if (emp.department == department) {
+vector<Employee> loadEmployeeByDepartment(const string &department, const vector<Employee> &employees) {
+    vector<Employee> employeesByDepartment;
+
+    for (const Employee &emp : employees) {
+        if (toLower(emp.department) == toLower(department)) {
             employeesByDepartment.push_back(emp);
         }
     }
-    displayEmployees(employeesByDepartment);
+
+    return employeesByDepartment;
 }
 
 int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Employee &oldest) {
@@ -157,12 +166,6 @@ int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Em
     }
 
     return totalAge/employees.size();
-}
-
-string toLower(string s) {
-    // Referenced https://www.geeksforgeeks.org/how-to-convert-std-string-to-lower-case-in-cpp/
-    transform(s.begin(), s.end(), s.begin(), ::tolower);
-    return s;
 }
 
 vector<Employee> nameMatchInput(const vector<Employee> &employees, string &textInput) {
