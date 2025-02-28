@@ -9,7 +9,7 @@ int main() {
     string departmentToFind;
     Employee youngest, oldest;
     string textInput;
-    int avgAge, choice;
+    int choice;
 
     // Read file to load employee data
     readfile(fileName, employees);
@@ -40,6 +40,15 @@ int main() {
                 cin >> departmentToFind;
                 vector<Employee> employeesByDepartment = loadEmployeeByDepartment(departmentToFind, employees);
                 displayEmployees(employeesByDepartment);
+                break;
+            }
+            case 5: {
+                int avgAge = findAgeStatistics(employees, youngest, oldest);
+                cout << "\nAverage age: " << avgAge << endl;
+                cout << "\nYoungest Employee";
+                displayEmployeeByID(employees, youngest.id);
+                cout << "\nOldest Employee";
+                displayEmployeeByID(employees, oldest.id);
                 break;
             }
             case 8: {
