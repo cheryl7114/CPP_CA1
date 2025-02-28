@@ -5,41 +5,43 @@ int choiceInput();
 
 int main() {
     const string fileName = "/Users/cherylkong/Desktop/CPP_CA1/employees.csv";
-    vector<Employee> employees, employeesByDepartment, employeesMatchingInput, descendingSalary;
-    map<string, int> departmentHeadcount;
+    vector<Employee> employees, employeesByDepartment, employeesMatchingInput;
     string departmentToFind;
     Employee youngest, oldest;
     string textInput;
-    int id, avgAge, choice;
+    int avgAge, choice;
 
     // Read file to load employee data
     readfile(fileName, employees);
     // Make a copy of the original data
-    descendingSalary = employees;
+    vector<Employee> descendingSalary = employees;
 
     do {
         menu();
         choice = choiceInput();
 
         switch(choice) {
-            case 1:
+            case 1: {
                 displayEmployees(employees);
                 break;
-            case 2:
-                id = getValidInt("\nEnter an employee ID to search for: ");
+            }
+            case 2: {
+                int id = getValidInt("\nEnter an employee ID to search for: ");
                 displayEmployeeByID(employees, id);
                 break;
-            case 8:
+            }
+            case 3: {
+                map<string, int> departmentHeadcount = countEmployeesByDepartment(employees);
+                displayDepartmentCounts(departmentHeadcount);
+                break;
+            }
+            case 8: {
                 cout << "\nExiting program..." << endl;
                 break;
+            }
         }
     } while(choice!=8);
 
-
-
-    // // Display department counts
-    // countEmployeesByDepartment(employees, departmentHeadcount);
-    // displayDepartmentCounts(departmentHeadcount);
 
     // cout << "\nEnter a department and I will display the employees in it: ";
     // cin >> departmentToFind;

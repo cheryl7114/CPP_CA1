@@ -107,13 +107,6 @@ void displayEmployeeByID(const vector<Employee> &employees, int id) {
     }
 }
 
-void countEmployeesByDepartment(const vector<Employee> &employees, map<string, int> &departmentHeadcount) {
-    for (const Employee& emp : employees) {
-        // Map according to department
-        departmentHeadcount[emp.department]++;
-    }
-}
-
 void displayDepartmentCounts(const map<string, int> &departmentHeadcount) {
     cout << "\n" << left << setw(15) << "Department"
          << setw(10) << "Headcount" << endl;
@@ -124,6 +117,16 @@ void displayDepartmentCounts(const map<string, int> &departmentHeadcount) {
         cout << left << setw(15) << department
              << setw(10) << count << endl;
     }
+}
+
+map<string, int> countEmployeesByDepartment(const vector<Employee> &employees) {
+    map<string, int> departmentHeadcount;
+
+    for (const Employee& emp : employees) {
+        departmentHeadcount[emp.department]++;
+    }
+
+    return departmentHeadcount;
 }
 
 void loadEmployeeByDepartment(const string& department, const vector<Employee> &employees, vector<Employee> &employeesByDepartment) {
