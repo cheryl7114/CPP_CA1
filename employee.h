@@ -28,5 +28,7 @@ void loadEmployeeByDepartment(const string& department, const vector<Employee> &
 int findAgeStatistics(const vector <Employee> &employees, Employee &youngest, Employee &oldest);
 vector<Employee> nameMatchInput(const vector<Employee> &employees, string &textInput);
 void sortDescendingSalary(vector<Employee> &descendingSalary);
+int getValidInt(const string &prompt, int minValue = INT_MIN, int maxValue = INT_MAX);
+
 
 #endif // EMPLOYEE_H

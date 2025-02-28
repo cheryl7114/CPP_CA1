@@ -98,6 +98,7 @@ void displayEmployeeByID(const vector<Employee> &employees, int id) {
     if (index == -1) {
         cout << "\nEmployee with ID " << id << " not found." << endl;
     } else {
+        cout << "\nID: " << employees[index].id << endl;
         cout << "Name: " << employees[index].name << endl;
         cout << "Age: " << employees[index].age << endl;
         cout << "Department: " << employees[index].department << endl;
@@ -190,4 +191,21 @@ void sortDescendingSalary(vector<Employee> &descendingSalary) {
     });
 
     displayEmployees(descendingSalary);
+}
+
+int getValidInt(const string &prompt, int minValue, int maxValue) {
+    int value;
+    while (true) {
+        cout << prompt;
+        if (cin >> value && value >= minValue && value <= maxValue) {
+            return value; // Return valid input within range
+        }
+        cout << "Invalid input. Please enter a number";
+        if (minValue != INT_MIN && maxValue != INT_MAX) {
+            cout << " between " << minValue << " and " << maxValue; // If there's a specified range
+        }
+        cout << "." << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear invalid input
+    }
 }

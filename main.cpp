@@ -20,12 +20,22 @@ int main() {
     do {
         menu();
         choice = choiceInput();
-        cout << "Your choice: " << choice << endl;
+
+        switch(choice) {
+            case 1:
+                displayEmployees(employees);
+                break;
+            case 2:
+                id = getValidInt("\nEnter an employee ID to search for: ");
+                displayEmployeeByID(employees, id);
+                break;
+            case 8:
+                cout << "\nExiting program..." << endl;
+                break;
+        }
     } while(choice!=8);
 
-    // cout << "Enter an employee ID to search for: ";
-    // cin >> id;
-    // displayEmployeeByID(employees, 98);
+
 
     // // Display department counts
     // countEmployeesByDepartment(employees, departmentHeadcount);
@@ -40,35 +50,23 @@ int main() {
     // employeesMatchingInput = nameMatchInput(employees, textInput);
     // displayEmployees(employeesMatchingInput);
 
-    sortDescendingSalary(descendingSalary);
+    // sortDescendingSalary(descendingSalary);
 
     return 0;
 }
 
 void menu() {
-    cout << "Employee App Menu" << endl <<
+    cout << "\nEmployee App Menu" << endl <<
             "1. Display all employees" << endl <<
             "2. Find employee by ID" << endl <<
             "3. Display headcount for each department" << endl <<
             "4. Display employees in a department" << endl <<
             "5. Employee age statistics" << endl <<
-            "6. Search for an employee" << endl <<
+            "6. Find employee by name" << endl <<
             "7. Display employee data according to descending salary" << endl <<
             "8. Exit" << endl;
 }
 
 int choiceInput() {
-    int choice;
-    // https://www.geeksforgeeks.org/how-to-validate-user-input-in-cpp/
-    while(true) {
-        cout << "Enter your choice: ";
-
-        if (cin >> choice && choice >= 1 && choice <= 8) {
-            return choice;
-        } else {
-            cout << "Invalid input. Please enter a number between 1 and 8: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-        }
-    }
+    return getValidInt("\nEnter your choice: ", 1, 8);
 }
